@@ -10,4 +10,3 @@ class Solution:
             else: d2[c2] = 1
         l1, l2 = [sorted(list(d1.keys())), sorted(list(d1.values()))], [sorted(list(d2.keys())), sorted(list(d2.values()))]
         return l1[0] == l2[0] and l1[1] == l2[1]
-                
