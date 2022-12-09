@@ -6,19 +6,16 @@
 #         self.right = right
 class Solution:
     def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
-        def helper(node, min_max):
-            if not node: return min_max[1]-min_max[0]
-            if node.val < min_max[0]:
-                res1 = helper(node.left, [node.val, min_max[1]])
-                res2 = helper(node.right, [node.val, min_max[1]])
-            elif node.val > min_max[1]:
-                res1 = helper(node.left, [min_max[0], node.val])
-                res2 = helper(node.right, [min_max[0], node.val])
+        def helper(node, low, high):
+            if not node: return high-low
+            if node.val < low:
+                res1 = helper(node.left, node.val, high)
+                res2 = helper(node.right, node.val, high)
+            elif node.val > high:
+                res1 = helper(node.left, low, node.val)
+                res2 = helper(node.right, low, node.val)
             else:
-                res1 = helper(node.left, min_max)
-                res2 = helper(node.right, min_max)
-            if res1 > res2:
-                return res1
-            else:
-                return res2
-        return helper(root, [root.val, root.val])
+                res1 = helper(node.left, low, high)
+                res2 = helper(node.right, low, high)
+            return max(res1, res2)
+        return helper(root, root.val, root.val)
