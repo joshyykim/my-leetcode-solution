@@ -17,7 +17,6 @@ class Solution:
             else:
                 res1 = helper(node.left, min_max)
                 res2 = helper(node.right, min_max)
-            # print(node.val, min_max, res1, res2)
             if res1 > res2:
                 return res1
             else:
