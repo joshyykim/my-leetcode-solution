@@ -13,14 +13,13 @@ class Solution:
             node.val = node.val+left_total+right_total
             return node.val
         
-        def max_product(node, total, products):
-            if not node: return products
-            products = max_product(node.left, total, products)
-            products.append((total-node.val) * node.val)
-            products = max_product(node.right, total, products)
-            return products
+        def max_product(node, total, res):
+            if not node: return 0
+            left = max_product(node.left, total, res)
+            curr = (total-node.val) * node.val
+            right = max_product(node.right, total, res)
+            return max(left, curr, right)
         
         modulo = 10 ** 9 + 7
         val_to_sum(root, 0)
-        li = max_product(root, root.val, [])
-        return pow(max(li),1,modulo)
+        return pow(max_product(root, root.val, root.val),1,modulo)
