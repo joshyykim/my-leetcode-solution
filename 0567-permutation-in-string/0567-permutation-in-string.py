@@ -1,22 +1,16 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        d1 = collections.Counter(s1)
-        lengthToCompare = len(s2)-len(s1)
-        for i in range(lengthToCompare+1):
-            d = collections.Counter(s2[i:i+len(s1)])
-            flag = True
-            for k in d1.keys():
-                if k not in d or d[k] != d1[k]:
-                    flag = False
-            if flag:
-                return True
+        if len(s2) < len(s1): return False
+        d1, d2 = {}, {}
+        for c in string.ascii_lowercase:
+            d1[c], d2[c] = 0, 0
+        for c in s1:
+            d1[c] += 1
+        for i in range(len(s1)):
+            d2[s2[i]] += 1
+        for i in range(len(s1), len(s2)+1):
+            if d1 == d2: return True
+            if i == len(s2): break
+            d2[s2[i-len(s1)]] -= 1
+            d2[s2[i]] += 1
         return False
-            
-            
-#         len s1 = 3
-#         len s2 = 10
-#         xxx yyy xxxx
-        
-#         iterate 10-3 times
-#         iterate length = 3
-        
