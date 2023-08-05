@@ -1,7 +1,7 @@
 class Solution:
     def reverseVowels(self, s: str) -> str:
         s = list(s)
-        vowels = ['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u']
+        vowels = "AEIOUaeiou"
         temp_vowels = []
         for c in s:
             if c in vowels:
