@@ -38,21 +38,38 @@ class Solution:
 #         else:
 #             return head
         
-        ### method 3 (iteration without storing into a list); Time: O(n), Space: O(1)
-        curr = head
-        max_depth = -1
-        while curr:
-            max_depth += 1
-            curr = curr.next
+#         ### method 3 (iteration without storing into a list); Time: O(n), Space: O(1)
+#         curr = head
+#         max_depth = -1
+#         while curr:
+#             max_depth += 1
+#             curr = curr.next
 
-        curr = head
-        depth = 0
-        while curr:
-            if max_depth - depth == n-1 and curr == head:
-                head = curr.next
-            elif max_depth - depth == n:
-                curr.next = curr.next.next
-            curr = curr.next
-            depth += 1
+#         curr = head
+#         depth = 0
+#         while curr:
+#             if max_depth - depth == n-1 and curr == head:
+#                 head = curr.next
+#             elif max_depth - depth == n:
+#                 curr.next = curr.next.next
+#             curr = curr.next
+#             depth += 1
             
-        return head
+#         return head
+
+        ### method 4 (two pointers) ###
+        if not head:
+            return None
+        slow, fast = ListNode(0, head), ListNode(0, head)
+        
+        for i in range(n+1):
+            fast = fast.next
+        while fast:
+            slow = slow.next
+            fast = fast.next
+        
+        if slow.next == head:
+            return head.next
+        else:
+            slow.next = slow.next.next
+            return head
