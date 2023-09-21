@@ -14,17 +14,21 @@ class Solution:
         # return li == list(reversed(li))
     
         ### method 2 ###
-        node = head
-        li = []
-        li_2 = []
-        if node == None or node.next == None:
-            return True
-        while node.next != None:
-            li.append(node.val)
-            li_2.insert(0, node.val)
-            node = node.next
-        # print(li,li_2)
-        li.append(node.val)
-        li_2.insert(0, node.val)
-        print(li,li_2)
-        return li == li_2
+        slow, fast = head, head
+        stack = []
+        
+        while fast and fast.next:
+            stack.append(slow.val)
+            slow = slow.next
+            fast = fast.next.next
+        
+        if fast and not fast.next:
+            slow = slow.next
+            fast = fast.next
+            
+        while slow:
+            if stack.pop(-1) != slow.val:
+                return False
+            slow = slow.next
+        return True
+        
