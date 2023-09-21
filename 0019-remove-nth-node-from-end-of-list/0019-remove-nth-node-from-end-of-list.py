@@ -21,19 +21,38 @@ class Solution:
         #     curr = curr.next
         # return head
         
-        ### method 2 (recursion) 
-        def helper(head, curr):
-            if not curr:
-                return 1
-            nth_from_tail = helper(head, curr.next)
-            if nth_from_tail == n and curr == head:
-                return -1
-            elif nth_from_tail == n+1:
-                curr.next = curr.next.next
-            return nth_from_tail+1
+#         ### method 2 (recursion) Time: O(n), Space: O(n)
+#         def helper(head, curr):
+#             if not curr:
+#                 return 1
+#             nth_from_tail = helper(head, curr.next)
+#             if nth_from_tail == n and curr == head:
+#                 return -1
+#             elif nth_from_tail == n+1:
+#                 curr.next = curr.next.next
+#             return nth_from_tail+1
             
+#         curr = head
+#         if helper(head, curr) == -1:
+#             return head.next
+#         else:
+#             return head
+        
+        ### method 3 (iteration without storing into a list); Time: O(n), Space: O(1)
         curr = head
-        if helper(head, curr) == -1:
-            return head.next
-        else:
-            return head
+        max_depth = -1
+        while curr:
+            max_depth += 1
+            curr = curr.next
+
+        curr = head
+        depth = 0
+        while curr:
+            if max_depth - depth == n-1 and curr == head:
+                head = curr.next
+            elif max_depth - depth == n:
+                curr.next = curr.next.next
+            curr = curr.next
+            depth += 1
+            
+        return head
