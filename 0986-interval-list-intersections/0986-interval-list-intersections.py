@@ -1,15 +1,12 @@
 class Solution:
     def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
         res = []
-        
-        if not firstList or not secondList:
-            return res
+        if not firstList or not secondList: return res
         
         intervalFromFirst, intervalFromSecond = firstList.pop(0), secondList.pop(0);
 
         while True:
             popFirst, popSecond = False, False
-            # print(intervalFromFirst, intervalFromSecond)
             if intervalFromFirst[0] <= intervalFromSecond[0] and intervalFromFirst[1] >= intervalFromSecond[1]:
                 res.append(intervalFromSecond)
                 popSecond = True
@@ -34,6 +31,5 @@ class Solution:
                 intervalFromSecond = secondList.pop(0)
             else:
                 break
-                
-        # print(res)
+
         return res
