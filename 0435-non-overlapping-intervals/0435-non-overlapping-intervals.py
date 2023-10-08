@@ -4,9 +4,7 @@ class Solution:
         res = 0
         lastInterval = intervals.pop(0)
 
-        while True:
-            if not intervals:
-                return res
+        while intervals:
             currInterval = intervals.pop(0)
             if lastInterval[1] <= currInterval[0]:
                 lastInterval = currInterval
@@ -14,3 +12,5 @@ class Solution:
                 res += 1
                 if lastInterval[1] >= currInterval[1]:
                     lastInterval = currInterval
+
+        return res
