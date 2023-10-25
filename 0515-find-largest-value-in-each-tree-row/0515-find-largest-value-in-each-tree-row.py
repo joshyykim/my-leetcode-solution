@@ -6,18 +6,19 @@
 #         self.right = right
 class Solution:
     def largestValues(self, root: Optional[TreeNode]) -> List[int]:
-        li = []
+        res = []
         def helper(node, depth):
             if not node: return;
             
-            if len(li) <= depth:
-                li.append([])
+            if len(res) <= depth:
+                res.append(-pow(2,31)-1)
                 
-            li[depth].append(node.val)
+            if node.val > res[depth]:
+                res[depth] = node.val
             
             helper(node.left, depth+1)
             helper(node.right, depth+1)
             
             
         helper(root, 0)
-        return [max(_) for _ in li]
+        return res
