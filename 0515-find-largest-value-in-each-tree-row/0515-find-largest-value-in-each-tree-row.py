@@ -23,22 +23,30 @@ class Solution:
 #         helper(root, 0)
 #         return res
 
+#         res = []
+#         nodes = [root]
+#         depth = 0
+        
+#         while nodes and root:
+#             new_nodes = []
+#             res.append(float('-inf'))
+#             for node in nodes:
+#                 if node.left:
+#                     new_nodes.append(node.left)
+#                 if node.right:
+#                     new_nodes.append(node.right)
+#                 if res[depth] < node.val:
+#                     res[depth] = node.val
+#             nodes = new_nodes
+#             depth += 1
+        
+#         return res
+
         res = []
         nodes = [root]
-        depth = 0
-        
+
         while nodes and root:
-            new_nodes = []
-            res.append(float('-inf'))
-            for node in nodes:
-                if node.left:
-                    new_nodes.append(node.left)
-                if node.right:
-                    new_nodes.append(node.right)
-                if res[depth] < node.val:
-                    res[depth] = node.val
-            nodes = new_nodes
-            depth += 1
+            res.append(max(node.val for node in nodes))
+            nodes = [child for node in nodes for child in (node.left, node.right) if child]
         
         return res
-            
