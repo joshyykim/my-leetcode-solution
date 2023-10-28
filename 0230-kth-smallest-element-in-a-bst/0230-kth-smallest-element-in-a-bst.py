@@ -15,6 +15,5 @@ class Solution:
                 nodes.append(temp.left)
                 nodes.append(temp.right)
                 li.append(temp.val)
-        
-        heapq.heapify(li)
-        return heapq.nsmallest(k, li)[k-1]
+        li.sort()
+        return li[k-1]
