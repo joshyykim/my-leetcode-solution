@@ -3,10 +3,10 @@ class Solution:
         if len(word) > len(board) * len(board[0]):
             return False
 
-        count = Counter(sum(board, []))
-        for c, countWord in Counter(word).items():
-            if count[c] < countWord:
-                return False
+        # count = Counter(sum(board, []))
+        # for c, countWord in Counter(word).items():
+        #     if count[c] < countWord:
+        #         return False
 
 #         if count[word[0]] > count[word[-1]]:
 #             word = word[::-1]
