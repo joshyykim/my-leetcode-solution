@@ -4,23 +4,18 @@ class Solution:
         seen_combination = set()
         candidates.sort()
         
-        if sum(candidates) < target:
-            return res
-        
-        def helper(start_idx, combination):
-            temp_sum = sum(combination)
-            if temp_sum == target:
+        def helper(start_idx, combination, _target):
+            if _target == 0:
                 res.append(combination.copy())
-                return;
-            elif temp_sum > target:
                 return;
                     
             for i in range(start_idx, len(candidates)):
+                if i > start_idx and candidates[i] == candidates[i - 1]:
+                    continue
+                if -candidates[i] > _target:
+                    break
                 combination.append(candidates[i])
-                str_comb = ",".join([str(_) for _ in combination])
-                if str_comb not in seen_combination:
-                    helper(i+1, combination)
-                    seen_combination.add(str_comb)
-                combination.pop(-1)
-        helper(0, [])
+                helper(i+1, combination, _target-candidates[i])
+                combination.pop()
+        helper(0, [], target)
         return res
