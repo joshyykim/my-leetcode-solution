@@ -4,9 +4,6 @@ class Solution:
         seen_combination = set()
         candidates.sort()
         
-        # if sum(candidates) < target:
-        #     return res
-        
         def helper(start_idx, combination):
             temp_sum = sum(combination)
             if temp_sum == target:
