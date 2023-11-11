@@ -2,18 +2,9 @@ class Solution:
     def restoreIpAddresses(self, s: str) -> List[str]:
         res = []
         
-        def isValid(ip):
-            for integer in ip:
-                i = int(integer)
-                if i < 0 and i > 255:
-                    return False
-            return True
-        
         def helper(ip, string):
-            # print(ip, string)
             if len(string) == 0 and len(ip) == 4:
-                if isValid(ip):
-                    res.append(".".join(ip))
+                res.append(".".join(ip))
                 return
             
             temp = ""
