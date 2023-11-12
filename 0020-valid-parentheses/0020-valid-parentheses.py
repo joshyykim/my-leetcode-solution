@@ -13,4 +13,3 @@ class Solution:
                 except:
                     return False
         return len(stack) == 0
-                    
