@@ -6,10 +6,9 @@ class Solution:
             if p == "{" or p == "(" or p == "[":
                 stack.append(p)
             else:
-                try:
-                    open_p = stack.pop()
-                    if open_p + p != "()" and open_p + p != "[]" and open_p + p != "{}":
-                        return False
-                except:
+                if not stack:
+                    return False
+                open_p = stack.pop()
+                if open_p + p != "()" and open_p + p != "[]" and open_p + p != "{}":
                     return False
         return len(stack) == 0
