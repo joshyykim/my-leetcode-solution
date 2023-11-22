@@ -12,3 +12,15 @@ class Solution:
         for li in diagonal:
             res += li
         return res
+        return sum(diagonal, [])
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
