@@ -5,9 +5,8 @@ class Solution:
         for begin, end in zip(l,r):
             temp = nums[begin:end+1]
             temp.sort()
-            diffs = [temp[i+1]-temp[i] for i in range(len(temp)-1)]
-            # print(temp, diffs)
-            if len(set(diffs)) == 1:
+            diffs = set([temp[i+1]-temp[i] for i in range(len(temp)-1)])
+            if len(diffs) == 1:
                 res.append(True)
             else:
                 res.append(False)
