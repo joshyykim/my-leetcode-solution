@@ -1,8 +1,8 @@
 class Solution:
     def destCity(self, paths: List[List[str]]) -> str:
-        dest = paths[0][1]
-        for i in range(1,len(paths)):
-            for j in range(1,len(paths)):
-                if dest == paths[j][0]:
-                    dest = paths[j][1]
-        return dest
+        starts = [paths[_][0] for _ in range(len(paths))]
+        dests = [paths[_][1] for _ in range(len(paths))]
+        for i in range(len(paths)):
+            if dests[i] not in starts:
+                return dests[i]
+        return None
