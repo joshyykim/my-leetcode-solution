@@ -11,4 +11,3 @@ class Solution:
                     tmp *= pow(k, d[k]-1)
             res.append(tmp)
         return res
-        
