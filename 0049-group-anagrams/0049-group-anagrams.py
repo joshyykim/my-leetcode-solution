@@ -1,11 +1,10 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        sortedList = []
-        for s in strs:
-            sortedList.append((s, "".join(sorted(s))))
+        for i in range(len(strs)):
+            strs[i] = (strs[i], "".join(sorted(strs[i])))
         
         d = {}
-        for s, sortedS in sortedList:
+        for s, sortedS in strs:
             if sortedS in d:
                 d[sortedS].append(s)
             else:
