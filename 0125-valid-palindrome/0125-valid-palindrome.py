@@ -8,4 +8,4 @@ class Solution:
                 s = s.replace(s[i], "")
             else:
                 i += 1
-        return s[:] == s[::-1]
+        return s == s[::-1]
