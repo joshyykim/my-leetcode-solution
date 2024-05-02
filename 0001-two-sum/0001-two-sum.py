@@ -4,5 +4,5 @@ class Solution:
         for idx, i in enumerate(nums):
             if target - i in d:
                 return [d[target-i], idx]
-            if i not in d:
+            else:
                 d[i] = idx
