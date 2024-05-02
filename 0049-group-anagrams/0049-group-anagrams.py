@@ -9,5 +9,5 @@ class Solution:
                 d[sortedS].append(s)
             else:
                 d[sortedS] = [s]
-        
+
         return list(d.values())
