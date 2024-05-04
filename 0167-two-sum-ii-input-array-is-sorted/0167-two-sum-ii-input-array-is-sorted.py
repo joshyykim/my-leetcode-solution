@@ -4,7 +4,6 @@ class Solution:
         while idx < len(numbers):
             l, m, r = 0, idx // 2, idx
             while True:
-                # print(l, m, r, numbers[m], numbers[idx])
                 if numbers[m] + numbers[idx] == target:
                     return [m+1, idx+1]
                 else:
@@ -17,5 +16,4 @@ class Solution:
                 else:
                     l = m
                     m = (l+r) // 2
-                
             idx += 1
