@@ -8,7 +8,6 @@ class Solution:
         while m < len(nums)-1:
             l, r = 0, len(nums)-1
             while l < m and m < r:
-                # print(nums, l,m,r)
                 if nums[l] + nums[m] + nums[r] == 0:
                     res.add((nums[l], nums[m], nums[r]))
                     l += 1
