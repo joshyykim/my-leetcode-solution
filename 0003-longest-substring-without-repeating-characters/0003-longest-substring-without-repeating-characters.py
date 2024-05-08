@@ -7,7 +7,6 @@ class Solution:
             if s[i] in longest:
                 result.add(len(longest))
                 longest = s[d[s[i]]+1:i+1:]
-                # print(longest)
             else:
                 longest += s[i]
             d[s[i]] = i
