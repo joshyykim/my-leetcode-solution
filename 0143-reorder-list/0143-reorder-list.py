@@ -22,4 +22,3 @@ class Solution:
             if curr:
                 curr.val = stack[len(stack)-i-1]
                 curr = curr.next
-        
