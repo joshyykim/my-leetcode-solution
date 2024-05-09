@@ -16,10 +16,10 @@ class Solution:
                     res.next = ListNode(list2.val)
                     list2 = list2.next
             elif list1:
-                res.next = ListNode(list1.val)
-                list1 = list1.next
+                res.next = list1
+                break
             elif list2:
-                res.next = ListNode(list2.val)
-                list2 = list2.next
+                res.next = list2
+                break
             res = res.next
         return head.next
