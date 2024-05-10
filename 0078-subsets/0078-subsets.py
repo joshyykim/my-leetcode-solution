@@ -10,5 +10,4 @@ class Solution:
                 helper(i+1, local)
         
         helper(0, [])
-        print(res)
         return res
