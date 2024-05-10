@@ -1,9 +1,10 @@
 class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:        
         res = []
+        
         def helper(start_idx, combination):
             if sum(combination) == target:
-                res.append(combination.copy())
+                res.append(combination[:])
                 return;
             elif sum(combination) > target:
                 return;
