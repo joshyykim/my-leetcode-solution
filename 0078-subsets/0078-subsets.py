@@ -1,5 +1,9 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
+        return sum((list(combinations(nums, _)) for _ in range(len(nums)+1)), [])
+        
+        
+        
         res = []
         
         def helper(idx, sub):
