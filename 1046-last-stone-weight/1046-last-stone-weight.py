@@ -6,7 +6,7 @@ class Solution:
             if new_stone != 0:
                 stones.insert(bisect.bisect(stones, new_stone), new_stone)
 
-        if len(stones) > 0:
+        if stones:
             return stones[0]
         else:
             return 0
