@@ -1,6 +1,6 @@
 class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
-        stones = sorted(stones)
+        stones.sort()
         while len(stones) > 1:
             new_stone = stones.pop(-1) - stones.pop(-1)
             if new_stone != 0:
