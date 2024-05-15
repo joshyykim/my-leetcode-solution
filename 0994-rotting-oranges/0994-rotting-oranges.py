@@ -18,7 +18,7 @@ class Solution:
                 adjacent = ((i, j-1), (i, j+1), (i-1, j), (i+1, j))
                 for adj in adjacent:
                     i, j = adj
-                    if  i >= 0 and j >= 0 and i < len(grid) and j < len(grid[0]) and grid[i][j] == 1:
+                    if 0 <= i < len(grid) and 0 <= j < len(grid[0]) and grid[i][j] == 1:
                         cnt -= 1
                         grid[i][j] = 2
                         queue.append((i, j))
