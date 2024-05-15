@@ -1,12 +1,5 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
-        def rottening(i, j, m):
-            if i >= len(grid) or j >= len(grid[0]) or i < 0 or j < 0 or (i, j) in found:
-                return;
-            
-            if grid[i][j] == 1:
-                return max(findGround(i+1, j, m+1), findGround(i, j+1, m+1), findGround(i-1, j, m+1), findGround(i, j-1, m+1))
-            
         queue = []
         cnt, time = 0, -1
         
