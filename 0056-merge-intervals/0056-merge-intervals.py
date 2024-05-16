@@ -1,6 +1,5 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        ### method 2 (sorting, less memory) 
         intervals.sort(key=lambda x:x[0])
         index = 0
         
@@ -14,17 +13,3 @@ class Solution:
                 index += 1
 
         return intervals
-    
-#         ### method 3 (sorting, more memory)
-#         intervals.sort(key=lambda x:x[0])
-#         index = 0
-#         res = []
-        
-#         while index < len(intervals):
-#             if res[-1][1] >= interval[index][0]:
-#                 res.append([res[-1][0],max(res[-1][1],interval[index][1])])
-#             else:
-#                 res.append(interval[index])
-#                 index += 1
-                
-#         return res
