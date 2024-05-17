@@ -7,8 +7,5 @@ class Solution:
                 sub = nums[i]
             else:
                 sub = nums[i] + sub
-                
-            if sub > res:
-                res = sub
-        
+            res = max(res, sub)
         return res
